@@ -1,0 +1,66 @@
+.FirstScreenComponent{
+    background: #1A1F22 ;   
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    font-size: 3rem;
+    font-weight: 700;
+    color: #E1E4E6 ;
+    margin-bottom: 2rem;
+    font-family: 'Courier New', Courier, monospace ;
+   
+}
+.SelecctorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    background-color: #ffffff00;
+    border-radius: 10px;
+}
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+}
+.buttonJugador {
+    padding: 10px 25px;
+    background-color: transparent;
+    border: none;
+    box-shadow: 1PX 1PX 4px 1px #4ECB83;
+    color: #fafafa;
+    cursor: pointer;
+}
+.subtitle {
+    font-family: 'Courier New', Courier, monospace;
+    color: #4ECB83 ;
+    font-size: 25px;
+
+}
+
+.playContainer a{
+    text-decoration: none;
+    color: #fafafa;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    padding: 10px 25px;
+    background-color: transparent;
+    border: none;
+    box-shadow: 1PX 1PX 4px 1px #4ECB83;
+    color: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+
+}
