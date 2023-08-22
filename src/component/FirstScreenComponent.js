@@ -3,7 +3,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
+
 export default function FirstScreenComponent() {
+
+  fetch('https://emoji-api.com/emojis?access_key=08369c1949dee5b1e884aa570ba395a0f0488bc1')
+  .then(response => response.json())
+  .then(data => console.log(data));
+
+
   //Player vs Player
   const [buttonPlayers, setButtonPlayers] = useState(true)
   const [buttonP1, setButtonP1] = useState(false)
@@ -13,24 +20,30 @@ export default function FirstScreenComponent() {
   const [ShowPlayers, setShowPlayers] = useState(false)
   const [player1, setPlayer1] = useState('')
   const [player2, setPlayer2] = useState('')
+  const icons = ['X', 'O', ]
 
   //Player vs pc
 
   const [buttonPc, setButtonPc] = useState(true)
   const [buttonCompuer1, setButtonComputer1] = useState(false)
   const [showPCompuer, setShowComputer] = useState(false)
+  const [showIconPc, setShowIconPc] = useState(false)
+  const [showPcFinal, setShowPcFinal] = useState(false)
+  const [playerPc, setPlayerPc] = useState('')
+  // const [pcIcon, setPcIcon] = useState('')
 
   //I want to get the value of the input with the id Player1
-        const PvP = document.getElementsByClassName('buttonContainer')
+  const PvP = document.getElementsByClassName('buttonContainer')
 
 
+// Código de ejemplo
 
   function handleClickPlayers() {
     setButtonP1(!buttonP1)
     setButtonPlayers(!buttonPlayers)
     setButtonPc(!buttonPc)
 
-      PvP[0].style.justifyContent = 'center'
+    PvP[0].style.justifyContent = 'center'
   }
 
   function handleClickP1() {
@@ -58,17 +71,23 @@ export default function FirstScreenComponent() {
     setButtonPc(!buttonPc)
     setButtonPlayers(!buttonPlayers)
     setButtonComputer1(!buttonCompuer1)
-    setShowComputer(!showPCompuer)
-
-          PvP[0].style.justifyContent = 'center'
+    PvP[0].style.justifyContent = 'center'
   }
 
-    function handleClickComputer1() {
+  function handleClickComputer1() {
+    setShowComputer(!showPCompuer)
+  }
+
+  function handleClickIconPC() {
     setButtonComputer1(!buttonCompuer1)
     setShowComputer(!showPCompuer)
-    }
+    setShowIconPc(!showIconPc)
+  }
 
-
+  function handleClickPCFinal() {
+        setShowIconPc(!showIconPc)
+    setShowPcFinal(!showPcFinal)
+  }
 
   return (
     <div className="FirstScreenComponent">
@@ -139,10 +158,36 @@ export default function FirstScreenComponent() {
 
             {buttonCompuer1 && (
               <div className="changeName">
-                <input type="text" placeholder="Jugador 1" id="Player1" onChange={e => setPlayer1(e.target.value)} />
+                <input type="text" placeholder="Player" id="PlayerPc" onChange={e => setPlayerPc(e.target.value)} />
                 <button onClick={handleClickComputer1} className="submit">
                   Ok
                 </button>
+              </div>
+            )}
+
+            {showPCompuer && (
+              <div>
+                <button className="iconos" onClick={handleClickIconPC}>
+                  seleccionar icono
+                </button>
+              </div>
+            )}
+
+            {showIconPc && (
+              <div>
+                <button className="iconos" onClick={handleClickPCFinal}>
+                  seleccionar icono
+                </button>
+              </div>
+            )}
+
+            {showPcFinal && (
+              <div>
+                <h3>Jugador:</h3>
+                <p>{playerPc}</p>
+                {/* <h3>Jugador2:</h3>
+                <p>{player2}</p> */}
+                
               </div>
             )}
           </div>
